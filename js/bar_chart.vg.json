@@ -1,8 +1,8 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Top 10 Countries by Death Rate: Male vs. Female",
+    "title": "Top 10 Countries by Combined Death Rate",
     "data": {
-      "url": "https://raw.githubusercontent.com/zero-8848/FIT3179A2/main/data/cleaned_who_road_deaths.csv"
+      "url": "https://raw.githubusercontent.com/zero-8848/FIT3179/main/data/cleaned_who_road_deaths.csv"
     },
     "params": [
       {
@@ -17,37 +17,53 @@
     ],
     "transform": [
       {"filter": "datum.Year == selectedYear"},
-      {"sort": [{"field": "DeathRate_Male", "order": "descending"}]},
+      {
+        "joinaggregate": [
+          {"op": "sum", "field": "DeathRate_Male", "as": "totalDeathRate"}
+        ],
+        "groupby": ["Country"]
+      },
+      {"sort": [{"field": "totalDeathRate", "order": "descending"}]},
       {"window": [{"op": "row_number", "as": "rank"}]},
-      {"filter": "datum.rank <= 10"}
+      {"filter": "datum.rank <= 10"},
+      {"fold": ["DeathRate_Male", "DeathRate_Female"]},
+      {
+        "calculate": "datum.key === 'DeathRate_Male' ? 'Male' : 'Female'",
+        "as": "Gender"
+      }
+      
     ],
-    "facet": {
-      "column": {
-        "field": "variable",
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "Country",
         "type": "nominal",
-        "header": {"title": "Gender"}
-      }
-    },
-    "spec": {
-      "mark": "bar",
-      "encoding": {
-        "x": {"field": "Country", "type": "nominal", "axis": {"title": "Country"}},
-        "y": {
-          "field": "value",
-          "type": "quantitative",
-          "axis": {"title": "Death Rate"}
+        "sort": "-y",
+        "axis": {"title": "Country"}
+      },
+      "y": {
+        "field": "value",
+        "type": "quantitative",
+        "axis": {"title": "Death Rate"},
+        "stack": "zero"
+      },
+      "color": {
+        "field": "Gender",
+        "type": "nominal",
+        "legend": {
+          "title": "Gender"
         },
-        "color": {
-          "field": "variable",
-          "type": "nominal",
-          "legend": null
-        },
-        "tooltip": [
-          {"field": "Country", "type": "nominal"},
-          {"field": "DeathRate_Male", "type": "quantitative"},
-          {"field": "DeathRate_Female", "type": "quantitative"}
-        ]
-      }
+        "scale": {
+          "domain": ["Male", "Female"],
+          "range": ["#1f77b4", "#ff7f0e"]
+        }
+      },
+      "tooltip": [
+        {"field": "Country", "type": "nominal", "title": "Country"},
+        {"field": "DeathRate_Male", "type": "quantitative", "title": "Death Rate (Male)"},
+        {"field": "DeathRate_Female", "type": "quantitative", "title": "Death Rate (Female)"}
+      ]
+      
     }
   }
   
