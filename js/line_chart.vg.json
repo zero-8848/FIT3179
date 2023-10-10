@@ -1,0 +1,37 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Yearly Death Rate Trend",
+    "data": {
+      "url": "https://raw.githubusercontent.com/zero-8848/FIT3179/main/data/cleaned_who_road_deaths.csv"
+    },
+    "width": 400,
+    "height": 300,
+    "transform": [
+      {
+        "filter": {"selection": "selectedCountry"}
+      }
+    ],
+    "mark": "line",
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      "y": {
+        "field": "DeathRate_BothSexes",
+        "type": "quantitative",
+        "title": "Death Rate"
+      },
+      "color": {
+        "field": "Country",
+        "type": "nominal",
+        "legend": null
+      },
+      "tooltip": [
+        {"field": "Year", "type": "ordinal"},
+        {"field": "DeathRate_BothSexes", "type": "quantitative"}
+      ]
+    }
+  }
+  
