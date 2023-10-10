@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Global Road Traffic Death: 2000 to 2019</title>
   <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
@@ -26,6 +27,18 @@
     // Access the Vega view instance as result.view
   }).catch(console.error);
 </script>
+
+<div id="bar_chart"></div>
+<script type="text/javascript">
+  var spec_bar = "js/bar_chart.vg.json";
+  vegaEmbed('#bar_chart', spec_bar).then(function(result) {
+    // Access the Vega view instance as result.view
+  }).catch(console.error);
+</script>
+
+<div id="bar_chart"></div>
+
+
 
 </body>
 </html>
