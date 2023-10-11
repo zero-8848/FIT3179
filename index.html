@@ -1,57 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Global Road Traffic Death: 2000 to 2019</title>
+<title>Global Road Traffic Death: 2000 to 2019</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
-  
   <!-- CSS file -->
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
-</head>
+</head>  
+
 <body>
-  
-<div id="choropleth_map"></div>
-<script type="text/javascript">
-  var spec2 = "js/choropleth_map.vg.json";
-  vegaEmbed('#choropleth_map', spec2).then(function(result) {
-    // Access the Vega view instance as result.view
-  }).catch(console.error);
-</script>
 
-<div id="scatter_plot"></div>
-<script type="text/javascript">
-  var spec_scatter = "js/scatter_plot_interactive.vg.json";
-  vegaEmbed('#scatter_plot', spec_scatter).then(function(result) {
-    // Access the Vega view instance as result.view
-  }).catch(console.error);
-</script>
 
-<div id="line_chart"></div>
-<script type="text/javascript">
-  var spec_line = "js/line_chart.vg.json";
-  vegaEmbed('#line_chart', spec_line).then(function(result) {
-    // Access the Vega view instance as result.view
-  }).catch(console.error);
-</script>
+    <!-- Header -->
+    <header class="w3-container w3-red w3-center" style="padding:128px 16px">
+      <h1 class="w3-margin w3-jumbo">Road Traffic Deaths Analysis</h1>
+      <p class="w3-xlarge">An in-depth analysis of road traffic deaths across countries and over the years.</p>
+  </header>
 
-<div id="radar_chart"></div>
-<script type="text/javascript">
-  var spec_radar = "js/radar_chart.vg.json";
-  vegaEmbed('#radar_chart', spec_radar).then(function(result) {
-    // Access the Vega view instance as result.view
-  }).catch(console.error);
-</script>
+  <!-- Map Visualization Section -->
+  <div class="w3-row-padding w3-padding-64 w3-container">
+      <div class="w3-content">
+          <div class="w3-twothird">
+            <div id="choropleth_map"></div>
+              <script type="text/javascript">
+                var spec2 = "js/choropleth_map.vg.json";
+                vegaEmbed('#choropleth_map', spec2).then(function(result) {
+                // Access the Vega view instance as result.view
+                }).catch(console.error);
+                </script>
+          </div>
+          <div class="w3-third w3-center">
+              <h2>Map Visualization</h2>
+              <p>Visual representation of road traffic deaths across different countries.</p>
+          </div>
+      </div>
+  </div>
 
-<div id="bar_chart"></div>
-<script type="text/javascript">
-  var spec_bar = "js/bar_chart.vg.json";
-  vegaEmbed('#bar_chart', spec_bar).then(function(result) {
-    // Access the Vega view instance as result.view
-  }).catch(console.error);
-</script>
+  <!-- Radar Chart Section -->
+  <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+      <div class="w3-content">
+          <div class="w3-third w3-center">
+              <h2>Radar Chart</h2>
+              <p>Analysis of deaths based on continents.</p>
+          </div>
+          <div class="w3-twothird">
+              <div id="radar-chart"></div>
+              <script type="text/javascript">
+                  var spec_radar = "js/radar_chart.vg.json";
+                  vegaEmbed('#radar-chart', spec_radar).then(function(result) {
+                      // Access the Vega view instance as result.view
+                  }).catch(console.error);
+              </script>
+          </div>
+      </div>
+  </div>
 
+<div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+    <h1 class="w3-margin w3-xlarge">Quote of the day: live life</h1>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
+  <div class="w3-xlarge w3-padding-32">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+ </div>
+ <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
 
 </body>
 </html>
+
+
+

@@ -1,8 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Worldwide Road Traffic Death Rate",
-  "width": 800,
-  "height": 600,
+  "width": 600,
+  "height": 450,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
   "projection": {
     "type": "equalEarth"
   },
