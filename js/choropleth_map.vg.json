@@ -6,14 +6,6 @@
   "projection": {
     "type": "equalEarth"
   },
-  "selection": {
-    "selectedCountry": {
-      "type": "single",
-      "fields": ["properties.SOVEREIGNT"],
-      "init": {"properties.SOVEREIGNT": "Australia"},
-      "bind": {"input": "select", "options": null}
-    }
-  },
   "layer": [
     {
       "transform": [
@@ -52,16 +44,15 @@
       "mark": {"type": "geoshape", "stroke": "white"},
       "encoding": {
         "color": {
-          "condition": {
-            "test": "datum.DeathRate_BothSexes != null",
-            "field": "DeathRate_BothSexes",
-            "type": "quantitative",
-            "scale": {
-              "type": "sequential",
-              "scheme": "reds"
-            }
+          "field": "DeathRate_BothSexes",
+          "type": "quantitative",
+          "scale": {
+            "type": "sequential",
+            "scheme": "reds"
           },
-          "value": "lightgray"
+          "legend": {
+            "title": "Death Rate (per 100,000 population)"
+          }
         },
         "tooltip": [
           {

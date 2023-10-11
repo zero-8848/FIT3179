@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Yearly Death Rate Trend",
+    "title": "Yearly Death Rate Trend for Australia",
     "data": {
       "url": "https://raw.githubusercontent.com/zero-8848/FIT3179/main/data/cleaned_who_road_deaths.csv"
     },
@@ -8,7 +8,7 @@
     "height": 300,
     "transform": [
       {
-        "filter": {"selection": "selectedCountry"}
+        "filter": "datum.Country === 'Australia'"
       }
     ],
     "mark": "line",
@@ -23,15 +23,16 @@
         "type": "quantitative",
         "title": "Death Rate"
       },
-      "color": {
-        "field": "Country",
-        "type": "nominal",
-        "legend": null
-      },
       "tooltip": [
         {"field": "Year", "type": "ordinal"},
         {"field": "DeathRate_BothSexes", "type": "quantitative"}
-      ]
+      ],
+      "opacity": {
+        "condition": {
+          "test": "datum.DeathRate_BothSexes !== null",
+          "value": 1
+        },
+        "value": 0.1
+      }
     }
-  }
-  
+}

@@ -20,16 +20,26 @@
   }).catch(console.error);
 </script>
 
-<div id="linechart"></div>
-<script type="text/javascript">
-  vegaEmbed('#linechart', 'js/line_chart.vg.json');
-</script>
-
-
 <div id="scatter_plot"></div>
 <script type="text/javascript">
   var spec_scatter = "js/scatter_plot_interactive.vg.json";
   vegaEmbed('#scatter_plot', spec_scatter).then(function(result) {
+    // Access the Vega view instance as result.view
+  }).catch(console.error);
+</script>
+
+<div id="line_chart"></div>
+<script type="text/javascript">
+  var spec_line = "js/line_chart.vg.json";
+  vegaEmbed('#line_chart', spec_line).then(function(result) {
+    // Access the Vega view instance as result.view
+  }).catch(console.error);
+</script>
+
+<div id="radar_chart"></div>
+<script type="text/javascript">
+  var spec_radar = "js/radar_chart.vg.json";
+  vegaEmbed('#radar_chart', spec_radar).then(function(result) {
     // Access the Vega view instance as result.view
   }).catch(console.error);
 </script>
@@ -41,9 +51,6 @@
     // Access the Vega view instance as result.view
   }).catch(console.error);
 </script>
-
-<div id="bar_chart"></div>
-
 
 
 </body>

@@ -16,23 +16,14 @@
       }
     ],
     "transform": [
-      {"filter": "datum.Year == selectedYear"},
-      {
-        "joinaggregate": [
-          {"op": "sum", "field": "DeathRate_Male", "as": "totalDeathRate"}
-        ],
-        "groupby": ["Country"]
-      },
-      {"sort": [{"field": "totalDeathRate", "order": "descending"}]},
-      {"window": [{"op": "row_number", "as": "rank"}]},
-      {"filter": "datum.rank <= 10"},
-      {"fold": ["DeathRate_Male", "DeathRate_Female"]},
-      {
-        "calculate": "datum.key === 'DeathRate_Male' ? 'Male' : 'Female'",
-        "as": "Gender"
-      }
-      
-    ],
+        {"filter": "datum.Year == selectedYear"},
+        {"filter": {"field": "Country", "oneOf": [ "China", "India", "Brazil","Japan", "Germany", "Australia", "France", "Italy"]}},
+        {"fold": ["DeathRate_Male", "DeathRate_Female"]},
+        {
+          "calculate": "datum.key === 'DeathRate_Male' ? 'Male' : 'Female'",
+          "as": "Gender"
+        }
+      ],
     "mark": "bar",
     "encoding": {
       "x": {
@@ -63,7 +54,5 @@
         {"field": "DeathRate_Male", "type": "quantitative", "title": "Death Rate (Male)"},
         {"field": "DeathRate_Female", "type": "quantitative", "title": "Death Rate (Female)"}
       ]
-      
     }
-  }
-  
+}
