@@ -19,16 +19,9 @@
         "fields": ["properties.CONTINENT"]
       }
     },
-    {
-      "filter": "datum.Year == 2018"
-    },
+    {"filter": "datum.Year == 2018"},
     {
       "aggregate": [
-        {
-          "op": "sum",
-          "field": "Deaths_BothSexes",
-          "as": "totalDeaths"
-        },
         {
           "op": "mean",
           "field": "DeathRate_BothSexes",
@@ -36,57 +29,19 @@
         }
       ],
       "groupby": ["properties.CONTINENT"]
-    },
-    {
-      "calculate": "datum.totalDeaths / sum(datum.totalDeaths)",
-      "as": "percentageDeaths"
     }
   ],
-  "mark": {
-    "type": "line",
-    "tooltip": true,
-    "strokeWidth": 2
-  },
-  "encoding": {
-    "theta": {
-      "field": "percentageDeaths",
-      "type": "quantitative",
-      "stack": true
-    },
-    "radius": {
-      "field": "avgDeathRate",
-      "type": "quantitative"
-    },
-    "color": {
-      "field": "properties.CONTINENT",
-      "type": "nominal",
-      "legend": {
-        "title": "Continent"
-      }
-    },
-    "tooltip": [
-      {
-        "field": "properties.CONTINENT",
-        "type": "nominal",
-        "title": "Continent"
-      },
-      {
-        "field": "avgDeathRate",
-        "type": "quantitative",
-        "title": "Average Death Rate"
-      },
-      {
-        "field": "percentageDeaths",
-        "type": "quantitative",
-        "title": "Percentage of Deaths"
-      }
-    ],
-    "opacity": {
-      "condition": {
-        "test": "datum.avgDeathRate !== null",
-        "value": 1
-      },
-      "value": 0.1
+  "layer": [{
+    "mark": {"type": "arc", "innerRadius": 20, "stroke": "#fff"}
+  },{
+    "mark": {"type": "text", "radiusOffset": 10},
+    "encoding": {
+      "text": {"field": "avgDeathRate", "type": "quantitative"}
     }
+  }],
+  "encoding": {
+    "theta": {"field": "avgDeathRate", "type": "quantitative", "stack": true},
+    "radius": {"field": "avgDeathRate", "scale": {"type": "sqrt", "zero": true, "rangeMin": 20}},
+    "color": {"field": "properties.CONTINENT", "type": "nominal", "legend": {"title": "Continent"}}
   }
 }
