@@ -1,92 +1,130 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Average Death Rate by Continent (2018)",
+  "width": 800,
+  "height": 600,
+  "title": "How Death Rates Relate to Population Density",
   "data": {
     "url": "https://raw.githubusercontent.com/zero-8848/FIT3179/main/data/cleaned_who_road_deaths.csv"
   },
-  "transform": [
+  "params": [
     {
-      "lookup": "Country",
-      "from": {
-        "data": {
-          "url": "https://raw.githubusercontent.com/zero-8848/FIT3179A2/main/js/ne_110m_admin_0_countries.topojson",
-          "format": {
-            "type": "topojson",
-            "feature": "ne_110m_admin_0_countries"
-          }
-        },
-        "key": "properties.SOVEREIGNT",
-        "fields": ["properties.CONTINENT"]
+      "name": "Year_Filter",
+      "value": 2000,
+      "bind": {
+        "input": "range",
+        "min": 2000,
+        "max": 2019,
+        "step": 1,
+        "name": "Filter by Year: "
       }
-    },
-    {
-      "filter": "datum.Year == 2018"
-    },
-    {
-      "aggregate": [
-        {
-          "op": "sum",
-          "field": "Deaths_BothSexes",
-          "as": "totalDeaths"
-        },
-        {
-          "op": "mean",
-          "field": "DeathRate_BothSexes",
-          "as": "avgDeathRate"
-        }
-      ],
-      "groupby": ["properties.CONTINENT"]
-    },
-    {
-      "calculate": "datum.totalDeaths / sum(datum.totalDeaths)",
-      "as": "percentageDeaths"
     }
   ],
-  "mark": {
-    "type": "line",
-    "tooltip": true,
-    "strokeWidth": 2
-  },
+  "transform": [
+    {
+      "filter": "datum.Deaths_BothSexes > 1"
+    },
+    {
+      "filter": "datum.population_density > 0"
+    },
+    {
+      "filter": "datum.Year == Year_Filter"
+    }
+  ],
   "encoding": {
-    "theta": {
-      "field": "percentageDeaths",
+    "x": {
+      "field": "DeathRate_BothSexes",
       "type": "quantitative",
-      "stack": true
+      "title": "Death Rate (Both Sexes)",
+      "scale": {
+        "domain": [
+          0,
+          50
+        ]
+      },
+      "axis": {
+        "tickCount": 5
+      }
     },
-    "radius": {
-      "field": "avgDeathRate",
-      "type": "quantitative"
-    },
-    "color": {
-      "field": "properties.CONTINENT",
-      "type": "nominal",
-      "legend": {
-        "title": "Continent"
+    "y": {
+      "field": "population_density",
+      "type": "quantitative",
+      "title": "Population Density",
+      "scale": {
+        "type": "log",
+        "domain": [
+          1,
+          10000
+        ],
+        "base": 10
+      },
+      "axis": {
+        "values": [
+          1,
+          10,
+          100,
+          1000,
+          10000
+        ],
+        "grid": true
       }
     },
     "tooltip": [
       {
-        "field": "properties.CONTINENT",
-        "type": "nominal",
-        "title": "Continent"
+        "field": "Country",
+        "type": "nominal"
       },
       {
-        "field": "avgDeathRate",
+        "field": "DeathRate_BothSexes",
         "type": "quantitative",
-        "title": "Average Death Rate"
+        "format": ".2f",
+        "title": "Death Rate"
       },
       {
-        "field": "percentageDeaths",
+        "field": "population_density",
         "type": "quantitative",
-        "title": "Percentage of Deaths"
+        "format": ".2f",
+        "title": "Population Density"
+      },
+      {
+        "field": "Year",
+        "type": "quantitative"
       }
-    ],
-    "opacity": {
-      "condition": {
-        "test": "datum.avgDeathRate !== null",
-        "value": 1
+    ]
+  },
+  "layer": [
+    {
+      "mark": "point"
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": 60,
+        "fontSize": 11.5,
+        "fontStyle": "italic"
       },
-      "value": 0.1
+      "encoding": {
+        "x": {
+          "field": "DeathRate_BothSexes",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "population_density",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "Country",
+          "type": "nominal"
+        },
+        "opacity": {
+          "condition": {
+            "test": "datum['Country'] == 'Singapore' || datum['Country'] == 'Rwanda'",
+            "value": 1
+          },
+          "value": 0
+        }
+      }
     }
-  }
+  ]
 }

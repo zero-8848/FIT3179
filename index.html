@@ -13,84 +13,188 @@
   <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
-  <!-- CSS file -->
-  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
+  
+  <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+    .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+    .fa-anchor,.fa-coffee {font-size:200px}
+    .vis-container {
+    width: 100%;
+}
+  </style>
 </head>  
 
 <body>
 
 
-    <!-- Header -->
-    <header class="w3-container w3-red w3-center" style="padding:128px 16px">
+  <!-- Header -->
+  <header class="w3-container w3-red w3-center" style="padding: 16px">
       <h1 class="w3-margin w3-jumbo">Road Traffic Deaths Analysis</h1>
       <p class="w3-xlarge">An in-depth analysis of road traffic deaths across countries and over the years.</p>
   </header>
 
-  <!-- Map Visualization Section -->
+  
+<!-- Map Visualization Section -->
   <div class="w3-row-padding w3-padding-64 w3-container">
-      <div class="w3-content">
-          <div class="w3-twothird">
-            <div id="choropleth_map"></div>
-              <script type="text/javascript">
-                var spec2 = "js/choropleth_map.vg.json";
-                vegaEmbed('#choropleth_map', spec2).then(function(result) {
-                // Access the Vega view instance as result.view
-                }).catch(console.error);
-                </script>
-          </div>
-          <div class="w3-third w3-center">
-              <h2>Map Visualization</h2>
-              <p>Visual representation of road traffic deaths across different countries.</p>
-          </div>
-      </div>
+    <div class="pure-g"> <!-- Pure grid container -->
+
+        <!-- Map Container (2/3 of the width) -->
+        <div class="pure-u-2-3">
+          <div id="vis1" class="vis-container"></div>
+        </div>
+
+        <!-- Text Container (1/3 of the width) -->
+        <div class="pure-u-1-3 w3-center">
+            <h2>Map Visualization</h2>
+            <p>Delve into a comprehensive visual exploration that showcases the varying rates of road traffic fatalities across nations. This map provides a clear and detailed perspective, highlighting the disparities in road safety measures and outcomes worldwide. By understanding these patterns, stakeholders can identify areas of concern and work towards creating safer road environments for all.The Global status report on road safety 2018, launched by WHO in December 2018, highlights that the number of annual road traffic deaths has reached 1.35 million. Road traffic injuries are now the leading killer of people aged 5-29 years. The burden is disproportionately borne by pedestrians, cyclists and motorcyclists, in particular those living in developing countries. The report suggests that the price paid for mobility is too high, especially because proven measures exist. Drastic action is needed to put these measures in place to meet any future global target that might be set and save lives.This list of countries by traffic-related death rate shows the annual number of road fatalities per capita per year, per number of motor vehicles, and per vehicle-km in some countries in the year the data was collected.
+
+              According to the World Health Organization (WHO), road traffic injuries caused an estimated 1.35 million deaths worldwide in 2016.[2] That is, one person is killed every 26 seconds on average.
+              
+              Only 28 countries, representing 449 million people (seven percent of the world's population), have laws that address the five risk factors of speed, drunk driving, helmets, seat-belts and child restraints.[citation needed] Over a third of road traffic deaths in low- and middle-income countries are among pedestrians and cyclists. However, less than 35 percent of low- and middle-income countries have policies in place to protect these road users.[3] The average rate was 17.4 per 100,000 people. Low-income countries now have the highest annual road traffic fatality rates, at 24.1 per 100,000, while the rate in high-income countries is lowest, at 9.2 per 100,000.[3]
+              
+              Seventy-four percent of road traffic deaths occur in middle-income countries, which account for only 53 percent of the world's registered vehicles. In low-income countries it is even worse. Only one percent of the world's registered cars produce 16 percent of world's road traffic deaths. This indicates that these countries bear a disproportionately high burden of road traffic deaths relative to their level of motorization.[3]
+                             
+        </div>
+
+    </div> <!-- End of pure grid container -->
   </div>
 
-  <!-- Radar Chart Section -->
-  <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
-      <div class="w3-content">
-          <div class="w3-third w3-center">
-              <h2>Radar Chart</h2>
-              <p>Analysis of deaths based on continents.</p>
-          </div>
-          <div class="w3-twothird">
-              <div id="radar-chart"></div>
-              <script type="text/javascript">
-                  var spec_radar = "js/radar_chart.vg.json";
-                  vegaEmbed('#radar-chart', spec_radar).then(function(result) {
-                      // Access the Vega view instance as result.view
-                  }).catch(console.error);
-              </script>
-          </div>
-      </div>
-  </div>
+<!-- Map Visualization Section -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="pure-g"> <!-- Pure grid container -->
+      <!-- Text Container (1/3 of the width) -->
+      <div class="pure-u-1-3 w3-center">
+        <h2>Map Visualization</h2>
+        <p>Delve into a comprehensive visual exploration that showcases the varying rates of road traffic fatalities across nations. This map provides a clear and detailed perspective, highlighting the disparities in road safety measures and outcomes worldwide. By understanding these patterns, stakeholders can identify areas of concern and work towards creating safer road environments for all.The Global status report on road safety 2018, launched by WHO in December 2018, highlights that the number of annual road traffic deaths has reached 1.35 million. Road traffic injuries are now the leading killer of people aged 5-29 years. The burden is disproportionately borne by pedestrians, cyclists and motorcyclists, in particular those living in developing countries. The report suggests that the price paid for mobility is too high, especially because proven measures exist. Drastic action is needed to put these measures in place to meet any future global target that might be set and save lives.This list of countries by traffic-related death rate shows the annual number of road fatalities per capita per year, per number of motor vehicles, and per vehicle-km in some countries in the year the data was collected.
 
-<div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
-    <h1 class="w3-margin w3-xlarge">Quote of the day: live life</h1>
+          According to the World Health Organization (WHO), road traffic injuries caused an estimated 1.35 million deaths worldwide in 2016.[2] That is, one person is killed every 26 seconds on average.
+          
+          Only 28 countries, representing 449 million people (seven percent of the world's population), have laws that address the five risk factors of speed, drunk driving, helmets, seat-belts and child restraints.[citation needed] Over a third of road traffic deaths in low- and middle-income countries are among pedestrians and cyclists. However, less than 35 percent of low- and middle-income countries have policies in place to protect these road users.[3] The average rate was 17.4 per 100,000 people. Low-income countries now have the highest annual road traffic fatality rates, at 24.1 per 100,000, while the rate in high-income countries is lowest, at 9.2 per 100,000.[3]
+          
+          Seventy-four percent of road traffic deaths occur in middle-income countries, which account for only 53 percent of the world's registered vehicles. In low-income countries it is even worse. Only one percent of the world's registered cars produce 16 percent of world's road traffic deaths. This indicates that these countries bear a disproportionately high burden of road traffic deaths relative to their level of motorization.[3]
+          
+                        
+      </div>
+      <!-- scatter Container (2/3 of the width) -->
+      <div class="pure-u-2-3">
+        <div id="vis2" class="vis-container"></div>
+      </div>
+
+
+
+  </div> <!-- End of pure grid container -->
 </div>
+
+  <!-- Map Visualization Section -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="pure-g"> <!-- Pure grid container -->
+
+      <!-- Map Container (2/3 of the width) -->
+      <div class="pure-u-2-3">
+        <div id="vis3" class="vis-container"></div>
+      </div>
+
+      <!-- Text Container (1/3 of the width) -->
+      <div class="pure-u-1-3 w3-center">
+          <h2>Map Visualization</h2>
+          <p>Delve into a comprehensive visual exploration that showcases the varying rates of road traffic fatalities across nations. This map provides a clear and detailed perspective, highlighting the disparities in road safety measures and outcomes worldwide. By understanding these patterns, stakeholders can identify areas of concern and work towards creating safer road environments for all.The Global status report on road safety 2018, launched by WHO in December 2018, highlights that the number of annual road traffic deaths has reached 1.35 million. Road traffic injuries are now the leading killer of people aged 5-29 years. The burden is disproportionately borne by pedestrians, cyclists and motorcyclists, in particular those living in developing countries. The report suggests that the price paid for mobility is too high, especially because proven measures exist. Drastic action is needed to put these measures in place to meet any future global target that might be set and save lives.This list of countries by traffic-related death rate shows the annual number of road fatalities per capita per year, per number of motor vehicles, and per vehicle-km in some countries in the year the data was collected.
+
+            According to the World Health Organization (WHO), road traffic injuries caused an estimated 1.35 million deaths worldwide in 2016.[2] That is, one person is killed every 26 seconds on average.
+            
+            Only 28 countries, representing 449 million people (seven percent of the world's population), have laws that address the five risk factors of speed, drunk driving, helmets, seat-belts and child restraints.[citation needed] Over a third of road traffic deaths in low- and middle-income countries are among pedestrians and cyclists. However, less than 35 percent of low- and middle-income countries have policies in place to protect these road users.[3] The average rate was 17.4 per 100,000 people. Low-income countries now have the highest annual road traffic fatality rates, at 24.1 per 100,000, while the rate in high-income countries is lowest, at 9.2 per 100,000.[3]
+            
+            Seventy-four percent of road traffic deaths occur in middle-income countries, which account for only 53 percent of the world's registered vehicles. In low-income countries it is even worse. Only one percent of the world's registered cars produce 16 percent of world's road traffic deaths. This indicates that these countries bear a disproportionately high burden of road traffic deaths relative to their level of motorization.[3]
+                            
+      </div>
+
+  </div> <!-- End of pure grid container -->
+</div>
+
+
+
+
+  
+<!-- Map Visualization Section -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="pure-g"> <!-- Pure grid container -->
+
+
+
+      <!-- Text Container (1/3 of the width) -->
+      <div class="pure-u-1-3 w3-center">
+          <h2>Map Visualization</h2>
+          <p>Delve into a comprehensive visual exploration that showcases the varying rates of road traffic fatalities across nations. This map provides a clear and detailed perspective, highlighting the disparities in road safety measures and outcomes worldwide. By understanding these patterns, stakeholders can identify areas of concern and work towards creating safer road environments for all.The Global status report on road safety 2018, launched by WHO in December 2018, highlights that the number of annual road traffic deaths has reached 1.35 million. Road traffic injuries are now the leading killer of people aged 5-29 years. The burden is disproportionately borne by pedestrians, cyclists and motorcyclists, in particular those living in developing countries. The report suggests that the price paid for mobility is too high, especially because proven measures exist. Drastic action is needed to put these measures in place to meet any future global target that might be set and save lives.This list of countries by traffic-related death rate shows the annual number of road fatalities per capita per year, per number of motor vehicles, and per vehicle-km in some countries in the year the data was collected.
+
+            According to the World Health Organization (WHO), road traffic injuries caused an estimated 1.35 million deaths worldwide in 2016.[2] That is, one person is killed every 26 seconds on average.
+            
+            Only 28 countries, representing 449 million people (seven percent of the world's population), have laws that address the five risk factors of speed, drunk driving, helmets, seat-belts and child restraints.[citation needed] Over a third of road traffic deaths in low- and middle-income countries are among pedestrians and cyclists. However, less than 35 percent of low- and middle-income countries have policies in place to protect these road users.[3] The average rate was 17.4 per 100,000 people. Low-income countries now have the highest annual road traffic fatality rates, at 24.1 per 100,000, while the rate in high-income countries is lowest, at 9.2 per 100,000.[3]
+            
+            Seventy-four percent of road traffic deaths occur in middle-income countries, which account for only 53 percent of the world's registered vehicles. In low-income countries it is even worse. Only one percent of the world's registered cars produce 16 percent of world's road traffic deaths. This indicates that these countries bear a disproportionately high burden of road traffic deaths relative to their level of motorization.[3]
+                           
+      </div>
+      <!-- Map Container (2/3 of the width) -->
+      <div class="pure-u-2-3">
+        <div id="vis4" class="vis-container"></div>
+      </div>
+
+  </div> <!-- End of pure grid container -->
+</div>
+
+<!-- Map Visualization Section -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="pure-g"> <!-- Pure grid container -->
+
+      <!-- Map Container (2/3 of the width) -->
+      <div class="pure-u-2-3">
+        <div id="vis5" class="vis-container"></div>
+      </div>
+
+      <!-- Text Container (1/3 of the width) -->
+      <div class="pure-u-1-3 w3-center">
+          <h2>Map Visualization</h2>
+          <p>Delve into a comprehensive visual exploration that showcases the varying rates of road traffic fatalities across nations. This map provides a clear and detailed perspective, highlighting the disparities in road safety measures and outcomes worldwide. By understanding these patterns, stakeholders can identify areas of concern and work towards creating safer road environments for all.The Global status report on road safety 2018, launched by WHO in December 2018, highlights that the number of annual road traffic deaths has reached 1.35 million. Road traffic injuries are now the leading killer of people aged 5-29 years. The burden is disproportionately borne by pedestrians, cyclists and motorcyclists, in particular those living in developing countries. The report suggests that the price paid for mobility is too high, especially because proven measures exist. Drastic action is needed to put these measures in place to meet any future global target that might be set and save lives.This list of countries by traffic-related death rate shows the annual number of road fatalities per capita per year, per number of motor vehicles, and per vehicle-km in some countries in the year the data was collected.
+
+            According to the World Health Organization (WHO), road traffic injuries caused an estimated 1.35 million deaths worldwide in 2016.[2] That is, one person is killed every 26 seconds on average.
+            
+            Only 28 countries, representing 449 million people (seven percent of the world's population), have laws that address the five risk factors of speed, drunk driving, helmets, seat-belts and child restraints.[citation needed] Over a third of road traffic deaths in low- and middle-income countries are among pedestrians and cyclists. However, less than 35 percent of low- and middle-income countries have policies in place to protect these road users.[3] The average rate was 17.4 per 100,000 people. Low-income countries now have the highest annual road traffic fatality rates, at 24.1 per 100,000, while the rate in high-income countries is lowest, at 9.2 per 100,000.[3]
+            
+            Seventy-four percent of road traffic deaths occur in middle-income countries, which account for only 53 percent of the world's registered vehicles. In low-income countries it is even worse. Only one percent of the world's registered cars produce 16 percent of world's road traffic deaths. This indicates that these countries bear a disproportionately high burden of road traffic deaths relative to their level of motorization.[3]
+                           
+      </div>
+
+  </div> <!-- End of pure grid container -->
+</div>
+
 
 <!-- Footer -->
 <footer class="w3-container w3-padding-64 w3-center w3-opacity">  
-  <div class="w3-xlarge w3-padding-32">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
- </div>
- <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-</footer>
 
-<script>
-// Used to toggle the menu on small screens when clicking on the menu button
-function myFunction() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
+</footer>
+<script type="text/javascript">
+  var specVis1 = "js/choropleth_map.vg.json";
+  var specVis2 = "js/scatter_plot_interactive.vg.json";
+  var specVis3 = "js/bar_chart.vg.json";
+  var specVis4 = "js/radar_chart.vg.json";
+  var specVis5 = "js/line_chart.vg.json";
+  
+
+  vegaEmbed('#vis1', specVis1, { "actions": false });
+
+  vegaEmbed('#vis2', specVis2, { "actions": false }).then(function (result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  vegaEmbed('#vis3', specVis3, { "actions": false }).then(function (result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  vegaEmbed('#vis4', specVis4, { "actions": false }).then(function (result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+  vegaEmbed('#vis5', specVis5, { "actions": false }).then(function (result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
 </script>
 
 </body>
