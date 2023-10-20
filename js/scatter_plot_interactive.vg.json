@@ -76,13 +76,13 @@
         "field": "DeathRate_BothSexes",
         "type": "quantitative",
         "format": ".2f",
-        "title": "Death Rate"
+        "title": "Death Rate(per 100k ppl.)"
       },
       {
         "field": "population_density",
         "type": "quantitative",
         "format": ".2f",
-        "title": "Population Density"
+        "title": "Population Density (ppl./km^2)"
       },
       {
         "field": "Year",
@@ -118,7 +118,7 @@
         },
         "opacity": {
           "condition": {
-            "test": "datum['Country'] == 'Singapore' || datum['Country'] == 'Rwanda'",
+            "test": "datum['Country'] == 'Singapore' || datum['Country'] == 'Australia' || datum['Country'] == 'Namibia'" ,
             "value": 1
           },
           "value": 0

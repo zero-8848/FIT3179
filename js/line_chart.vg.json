@@ -12,7 +12,14 @@
       "filter": "datum.Country === 'Australia'"
     }
   ],
-  "mark": "line",
+  "mark": {
+    "type": "line",
+    "point": {
+        "filled": true,
+        "size": 100
+    },
+    "strokeWidth": 3
+},
   "encoding": {
     "x": {
       "field": "Year",

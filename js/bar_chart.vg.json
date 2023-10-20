@@ -47,13 +47,13 @@
         },
         "scale": {
           "domain": ["Male", "Female"],
-          "range": ["#1f77b4", "#ff7f0e"]
+          "range": ["#1f77b4", "#f44336"]
         }
       },
       "tooltip": [
         {"field": "Country", "type": "nominal", "title": "Country"},
-        {"field": "DeathRate_Male", "type": "quantitative", "title": "Death Rate (Male)"},
-        {"field": "DeathRate_Female", "type": "quantitative", "title": "Death Rate (Female)"}
+        {"field": "DeathRate_Male", "type": "quantitative", "title": "Death (Male) /100k ppl."},
+        {"field": "DeathRate_Female", "type": "quantitative", "title": "Death (Female) /100k ppl."}
       ]
     }
 }
