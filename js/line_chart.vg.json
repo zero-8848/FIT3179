@@ -1,39 +1,46 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Yearly Death Rate Trend for Australia",
-    "width":800,
-    "height": 618,
-    "autosize": "fit",
-    "data": {
-      "url": "https://raw.githubusercontent.com/zero-8848/FIT3179/main/data/cleaned_who_road_deaths.csv"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Yearly Death Rate Trend for Australia",
+  "width": 800,
+  "height": 618,
+  "autosize": "fit",
+  "data": {
+    "url": "https://raw.githubusercontent.com/zero-8848/FIT3179/main/data/cleaned_who_road_deaths.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.Country === 'Australia'"
+    }
+  ],
+  "mark": "line",
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "title": "Year"
     },
-    "transform": [
+    "y": {
+      "field": "DeathRate_BothSexes",
+      "type": "quantitative",
+      "title": "Death Rate"
+    },
+    "tooltip": [
       {
-        "filter": "datum.Country === 'Australia'"
+        "field": "Year",
+        "type": "ordinal"
+      },
+      {
+        "title":"Death Rate (per 100k ppl.)",
+        "field": "DeathRate_BothSexes",
+        "type": "quantitative"
       }
     ],
-    "mark": "line",
-    "encoding": {
-      "x": {
-        "field": "Year",
-        "type": "ordinal",
-        "title": "Year"
+    "opacity": {
+      "condition": {
+        "test": "datum.DeathRate_BothSexes !== null",
+        "value": 1
       },
-      "y": {
-        "field": "DeathRate_BothSexes",
-        "type": "quantitative",
-        "title": "Death Rate"
-      },
-      "tooltip": [
-        {"field": "Year", "type": "ordinal"},
-        {"field": "DeathRate_BothSexes", "type": "quantitative"}
-      ],
-      "opacity": {
-        "condition": {
-          "test": "datum.DeathRate_BothSexes !== null",
-          "value": 1
-        },
-        "value": 0.1
-      }
+      "value": 0.1
     }
+  }
 }

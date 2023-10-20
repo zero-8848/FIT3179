@@ -1,7 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "orldwide Road Traffic Death Rate per 100,000 population",
-  "width": 800,
+  "width": 700,
   "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
@@ -56,14 +55,11 @@
           "field": "DeathRate_BothSexes",
           "type": "quantitative",
           "scale": {
-            "type": "threshold",
-            "domain": [1, 10, 100],
-            "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
+            "type": "sequential",
+            "scheme": "reds"
           },
           "legend": {
-          "title": "Death Rate",
-          "labelFontSize": 10,
-          "titleFontSize": 12
+          "title": "Death per 100k ppl."
           }
         },
         "tooltip": [
@@ -75,7 +71,7 @@
           {
             "field": "DeathRate_BothSexes",
             "type": "quantitative",
-            "title": "Death Rate"
+            "title": "Death per 100k ppl."
           }
         ]
       }

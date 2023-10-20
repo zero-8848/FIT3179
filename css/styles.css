@@ -1,33 +1,82 @@
-#choropleth_map {
-	top:100px;
-	bottom: 100px; 
-	left: 100px;
-	right: 100px;
-	/*height: 1000px;
-	width: 800px;*/
-}
-/* General Styles */
-body, h1, h2, h3, h4, h5, h6 {
-    font-family: "Lato", sans-serif;
-}
 
-.w3-bar, h1, button {
-    font-family: "Montserrat", sans-serif;
-}
-
-/* Visualization Container Styles */
-#map-visualization, #radar-chart {
-    width: 100%;
-    height: 500px; /* Adjust height as needed */
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-#choropleth_map, #radar-chart {
-    width: 100%;
-    height: 100%;
-}
 
 
 /* Additional styles can be added as needed */
+body {
+    font-family: 'Georgia', serif;
+    background-color: #fafafa; /* Off-white background */
+    color: #333333; /* Dark grey text */
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.wrapper {
+    max-width: 100%; /* Use the full width */
+    margin: 0 auto; /* Center the dashboard on the page */
+    padding: 2vw; /* Use viewport width for padding to make it responsive */
+}
+
+.center {
+    text-align: center;
+    margin: auto;
+    width: 950px;
+    background-color: #f5f5f5; /* Light grey section background */
+    padding: 20px; /* Consolidated padding shorthand */
+ }
+
+.viz {
+    text-align: center;
+    margin-bottom: 2vw; /* Space between visualizations */
+}
+
+p {
+    text-align: justify;
+    columns: 1; /* Single column for better readability */
+    line-height: 1.5em; /* Increase line height for better readability */
+    font-size: 1.1em; /* Increase font size for better readability */
+    color: #333333; /* Dark grey text for paragraphs */
+}
+
+h1, h2, h3 {
+    margin-top: 0; /* Remove top margin for headers */
+}
+
+h1 {
+    font-size: 2.5em; /* Increase font size for main header */
+    margin-bottom: 1.5em; /* Space below main header */
+    color: #000000; /* Black text for main headers */
+}
+
+h4 {
+    color: grey;
+    font-size: 1em; /* Adjust font size for subheaders */
+    font-weight: 300;
+    text-align: right;
+}
+
+a {
+    color: #000000; /* Black text for links */
+    text-decoration: none; /* Remove underlines from links */
+}
+
+a:hover {
+    text-decoration: underline; /* Add underline back on hover */
+}
+
+#author {
+    font-size: 1em; /* Adjust font size for the author section */
+    text-align: right;
+    margin-top: 1.5em; /* Space above the author section */
+}
+
+/* Additional styles for dashboard elements */
+.dashboard-section {
+    margin-bottom: 2.5em; /* Space between dashboard sections */
+}
+
+.dashboard-card {
+    background-color: #ffffff; /* White background for cards */
+    padding: 2vw; /* Use viewport width for padding */
+    border-radius: 5px; /* Rounded corners for cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+  
