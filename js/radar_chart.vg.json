@@ -43,6 +43,20 @@
       "groupby": [
         "properties.CONTINENT"
       ]
+    },
+    {
+      "window": [
+        {
+          "op": "sum",
+          "field": "totalDeathContinent",
+          "as": "totalDeathContinentSum"
+        }
+      ],
+      "frame": [null, null]
+    },
+    {
+      "calculate": "datum.totalDeathContinent / datum.totalDeathContinentSum * 360",
+      "as": "normalizedDeathContinent"
     }
   ],
   "layer": [
@@ -68,9 +82,9 @@
   ],
   "encoding": {
     "theta": {
-      "field": "totalDeathContinent",
+      "field": "normalizedDeathContinent",
       "type": "quantitative",
-      "stack": true
+      "stack": null
     },
     "radius": {
       "field": "avgDeathRate",
