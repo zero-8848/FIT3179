@@ -54,7 +54,7 @@
     "x": {
       "field": "DeathRate_BothSexes",
       "type": "quantitative",
-      "title": "Death Rate (Both Sexes)",
+      "title": "Death Rate",
       "scale": {
         "domain": [
           0,
@@ -85,7 +85,7 @@
             "domain": [1000, 10000, 50000, 100000, 500000],
             "range": [10, 50, 150, 200, 300, 400]
           },
-          "legend": {"format": ".1s"}
+          "legend": {"title":"Total Death","format": ".1s"}
         },
         "color": {
           "field": "Continent",
@@ -129,7 +129,7 @@
           {"field": "Country", "type": "nominal"},
           {"field": "DeathRate_BothSexes", "type": "quantitative", "format": ".2f", "title": "Death Rate(per 100k ppl.)"},
           {"field": "population_density", "type": "quantitative", "format": ".2f", "title": "Ppl. Density (ppl./km^2)"},
-          {"field": "Deaths_BothSexes", "type": "quantitative", "title": "Deaths (Both Sexes)"},
+          {"field": "Deaths_BothSexes", "type": "quantitative", "title": "Total deaths"},
 
           {"field": "Year", "type": "quantitative"}
         ]
