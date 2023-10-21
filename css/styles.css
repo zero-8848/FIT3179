@@ -36,9 +36,7 @@ p {
     color: #333333; /* Dark grey text for paragraphs */
 }
 
-h1, h2, h3 {
-    margin-top: 0; /* Remove top margin for headers */
-}
+
 
 h1 {
     font-size: 2.5em; /* Increase font size for main header */

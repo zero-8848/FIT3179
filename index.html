@@ -5,17 +5,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
   <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
-  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
   
   <link rel="stylesheet" href="css/styles.css">
   
@@ -24,7 +21,7 @@
 
 <body>
 
-  <div class="center">
+<div class="center">
   <!-- Header -->
   <header class="w3-container w3-red w3-center" style="padding: 16px">
       <div class="w3-margin w3-jumbo">Global Road Traffic Death: 2000 to 2019</div>
@@ -32,14 +29,14 @@
   </header>
 
   <div class="w3-container w3-center">
-    <h2><b>Introduction</b></h2>
+    <h2 style="font-family: 'Georgia', serif;"><b>Introduction</b></h2>
     <p>Road safety is a paramount concern in today's fast-paced world, with millions of lives at stake every year. Our dashboard sheds light on global trends and patterns, emphasizing the critical need for proactive measures and informed decision-making to ensure safer roads for all.
   </div>
 <hr>
 
 <!-- Map Visualization Section -->
   <div class="w3-container w3-center">
-    <h2><b>Road Death Rate Across the World By 2000</b></h2>
+    <h2 style="font-family: 'Georgia', serif;"><b>Road Death Rate Across the World By 2000</b></h2>
 
     <!-- Map Container -->
     <div id="vis1" class="w3-center"></div>
@@ -51,13 +48,13 @@
       <p>The map provides a visual representation of road death rates across different countries for the year 2000. It's evident that there are significant disparities in road traffic death rates between regions. For instance, the <b>African</b> Region experiences the highest risk of road traffic fatalities with a rate of <b>26.6</b> deaths per 100,000 population. In contrast, the <b>European</b> Region has the lowest rate at <b>9.3</b> per 100,000.     
       <p>This choropleth map specifically illustrates the number of road deaths per 100,000 population in various countries. Throughout this dashboard, this metric will be referred to as the <b>"Death Rate."</b>
 
-      </div>
+    </div>
   </div>
 
 <hr>
 <!-- scatter plot Visualization Section -->
 <div class="w3-container w3-center">
-  <h2><b>How Road Death Rates Relate to Population Density</b></h2>
+  <h2 style="font-family: 'Georgia', serif;"><b>How Road Death Rates Relate to Population Density</b></h2>
 
   <!-- chart Container -->
   <div id="vis2" class="w3-center"></div>
@@ -78,15 +75,16 @@
       </p>
       
   </div>
+</div>
 
 <hr>
 
 <!--bar chart Visualization Section -->
 <div class="w3-container w3-center">
-  <h2><b>8 Countries by Road Death Rates: A Gender Perspective</b></h2>
+  <h2 style="font-family: 'Georgia', serif;"><b>8 Countries by Road Death Rates: A Gender Perspective</b></h2>
 
   <!-- chart Container -->
-  <div id="vis3" class="w3-center"></div>
+  <div id="vis3" class="w3-center viz"></div>
 
 
   <!-- Text -->
@@ -103,10 +101,10 @@
 
 <!--bar chart Visualization Section -->
 <div class="w3-container w3-center">
-  <h2><b>Trends in Australia's Road Death Rate Over the Years</b></h2>
+  <h2 style="font-family: 'Georgia', serif;"><b>Trends in Australia's Road Death Rate Over the Years</b></h2>
 
   <!-- chart Container -->
-  <div id="vis5" class="w3-center"></div>
+  <div id="vis5" class="w3-center viz"></div>
 
 
   <!-- Text -->
@@ -146,7 +144,7 @@
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
 </script>
-
+</div>
 </body>
 </html>
 
