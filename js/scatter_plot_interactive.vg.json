@@ -2,6 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 700,
   "height": 500,
+  "title": "Road Deaths per Country",
   "data": {
     "url": "https://raw.githubusercontent.com/zero-8848/FIT3179/main/data/cleaned_who_road_deaths.csv"
   },
@@ -16,18 +17,38 @@
         "step": 1,
         "name": "Filter by Year: "
       }
+    },
+    {
+      "name": "Continent_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "labels": [
+          "Show All",
+          "North America",
+          "South America",
+          "Europe",
+          "Africa",
+          "Asia",
+          "Oceania"
+        ],
+        "name": "Continent Selection: "
+      }
     }
   ],
   "transform": [
-    {
-      "filter": "datum.Deaths_BothSexes > 1"
-    },
-    {
-      "filter": "datum.population_density > 0"
-    },
-    {
-      "filter": "datum.Year == Year_Filter"
-    }
+    {"filter": "datum.Deaths_BothSexes > 1"},
+    {"filter": "datum.population_density > 0"},
+    {"filter": "datum.Year == Year_Filter"},
+    {"filter": "Continent_selection == null || datum.Continent == Continent_selection"}
   ],
   "encoding": {
     "x": {
@@ -48,81 +69,70 @@
       "field": "population_density",
       "type": "quantitative",
       "title": "Population Density",
-      "scale": {
-        "type": "log",
-        "domain": [
-          1,
-          10000
-        ],
-        "base": 10
-      },
-      "axis": {
-        "values": [
-          1,
-          10,
-          100,
-          1000,
-          10000
-        ],
-        "grid": true
-      }
-    },
-    "tooltip": [
-      {
-        "field": "Country",
-        "type": "nominal"
-      },
-      {
-        "field": "DeathRate_BothSexes",
-        "type": "quantitative",
-        "format": ".2f",
-        "title": "Death Rate(per 100k ppl.)"
-      },
-      {
-        "field": "population_density",
-        "type": "quantitative",
-        "format": ".2f",
-        "title": "Population Density (ppl./km^2)"
-      },
-      {
-        "field": "Year",
-        "type": "quantitative"
-      }
-    ]
+      "scale": {"type": "log", "domain": [1, 10000], "base": 10},
+      "axis": {"tickCount": 6, "values": [1, 10, 100, 1000, 10000], "grid": true}
+    }
   },
   "layer": [
     {
-      "mark": "point"
+      "mark": "circle",
+      "encoding": {
+        "size": {
+          "field": "Deaths_BothSexes",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [1000, 10000, 50000, 100000, 500000],
+            "range": [10, 50, 150, 200, 300, 400]
+          },
+          "legend": {"format": ".1s"}
+        },
+        "color": {
+          "field": "Continent",
+          "type": "nominal",
+          "scale": {
+            "domain": ["North America", "South America", "Europe", "Africa", "Asia", "Oceania"],
+            "range": ["#e41a1c", "#984ea3", "#ff7f00", "#a6cee3", "#377eb8", "#a65628"]
+          }
+        },
+        "opacity": {"value": 0.6},
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "DeathRate_BothSexes", "type": "quantitative", "format": ".2f", "title": "Death Rate(per 100k ppl.)"},
+          {"field": "population_density", "type": "quantitative", "format": ".2f", "title": "Population Density (ppl./km^2)"},
+          {"field": "Deaths_BothSexes", "type": "quantitative", "title": "Total Deaths"},
+
+          {"field": "Year", "type": "quantitative"}
+        ]
+      }
     },
     {
       "mark": {
         "type": "text",
         "align": "right",
         "baseline": "middle",
-        "dx": 60,
+        "dx": -12,
         "fontSize": 11.5,
         "fontStyle": "italic"
       },
       "encoding": {
-        "x": {
-          "field": "DeathRate_BothSexes",
-          "type": "quantitative"
-        },
-        "y": {
-          "field": "population_density",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "Country",
-          "type": "nominal"
-        },
+        "text": {"field": "Country", "type": "nominal"},
+        "color": {"value": "black"},
         "opacity": {
           "condition": {
-            "test": "datum['Country'] == 'Singapore' || datum['Country'] == 'Australia' || datum['Country'] == 'Namibia'" ,
+            "test": "datum['Country'] == 'Singapore' || datum['Country'] == 'Australia' || datum['Country'] == 'Namibia'",
             "value": 1
           },
           "value": 0
-        }
+        },
+        "tooltip": [
+          {"field": "Country", "type": "nominal"},
+          {"field": "DeathRate_BothSexes", "type": "quantitative", "format": ".2f", "title": "Death Rate(per 100k ppl.)"},
+          {"field": "population_density", "type": "quantitative", "format": ".2f", "title": "Ppl. Density (ppl./km^2)"},
+          {"field": "Deaths_BothSexes", "type": "quantitative", "title": "Deaths (Both Sexes)"},
+
+          {"field": "Year", "type": "quantitative"}
+        ]
       }
     }
   ]

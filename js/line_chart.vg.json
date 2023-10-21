@@ -12,42 +12,68 @@
       "filter": "datum.Country === 'Australia'"
     }
   ],
-  "mark": {
-    "type": "line",
-    "point": {
-        "filled": true,
-        "size": 100
-    },
-    "strokeWidth": 3
-},
-  "encoding": {
-    "x": {
-      "field": "Year",
-      "type": "ordinal",
-      "title": "Year"
-    },
-    "y": {
-      "field": "DeathRate_BothSexes",
-      "type": "quantitative",
-      "title": "Death Rate"
-    },
-    "tooltip": [
-      {
-        "field": "Year",
-        "type": "ordinal"
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "point": {
+          "filled": true,
+          "size": 100
+        },
+        "strokeWidth": 3
       },
-      {
-        "title":"Death Rate (per 100k ppl.)",
-        "field": "DeathRate_BothSexes",
-        "type": "quantitative"
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "title": "Year"
+        },
+        "y": {
+          "field": "DeathRate_BothSexes",
+          "type": "quantitative",
+          "title": "Death Rate"
+        },
+        "tooltip": [
+          {
+            "field": "Year",
+            "type": "ordinal"
+          },
+          {
+            "title": "Death Rate (per 100k ppl.)",
+            "field": "DeathRate_BothSexes",
+            "type": "quantitative"
+          }
+        ],
+        "opacity": {
+          "condition": {
+            "test": "datum.DeathRate_BothSexes !== null",
+            "value": 1
+          },
+          "value": 0.1
+        }
       }
-    ],
-    "opacity": {
-      "condition": {
-        "test": "datum.DeathRate_BothSexes !== null",
-        "value": 1
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "bottom",
+        "dx": 20,
+        "dy": -5
       },
-      "value": 0.1
+      "encoding": {
+        "x": {
+          "datum": "2009"
+        },
+        "y": {
+          "aggregate": "mean",
+          "field": "DeathRate_BothSexes",
+          "type": "quantitative"
+        },
+        "text": {
+          "value": "⬇️Road Safety Regulations 2009 Released"
+        }
+      }
     }
-  }
+  ]
 }
